@@ -8,5 +8,28 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 60px;
+}
+
+.navbar-lewagon .nav-item {
+  border: 1px solid pink;
+  border-radius: 4px;
+  margin: 0px 8px;
+  color: pink;
+  &:hover{
+    border: 1px solid rgb(248, 93, 119);
+  }
+  .nav-link {
+    color: pink;
+    &:hover {
+      color: rgb(248, 93, 119);
+    }
+  }
+}
+
+.navbar-lewagon .active {
+  border: 1px solid rgb(248, 93, 119);
+  .nav-link {
+    color: rgb(248, 93, 119);
+  }
 }

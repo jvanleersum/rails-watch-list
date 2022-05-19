@@ -9,6 +9,10 @@ class ListsController < ApplicationController
     @bookmarks = @list.bookmarks
   end
 
+  def new
+    @list = List.new
+  end
+
   def create
     @list = List.new(list_params)
     if @list.save

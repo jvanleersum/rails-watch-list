@@ -1,0 +1,13 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 64px;
+  padding: 32px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}

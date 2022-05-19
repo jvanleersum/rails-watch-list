@@ -1,13 +1,22 @@
-<h1>All lists</h1>
-
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
-
-<%= form_for(@list) do |f|%>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="banner">
+    <div class="container">
+      <h1>MyAwesomeMovieLists</h1>
+    </div>
+  </div>
+  
+  <div class="cards-container">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card-category">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= link_to new_list_path do %>
+      <div class="card-category card-new-list">
+        + add a new list
+      </div>
+    <% end %>
+  </div>
+</div>
