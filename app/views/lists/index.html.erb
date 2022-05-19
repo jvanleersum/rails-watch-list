@@ -1,0 +1,13 @@
+<h1>All lists</h1>
+
+<ul>
+  <% @lists.each do |list| %>
+    <li><%= link_to list.name, list_path(list) %></li>
+  <% end %>
+</ul>
+
+<%= form_for(@list) do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

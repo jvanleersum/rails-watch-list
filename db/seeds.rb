@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'json'
+require 'faker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,3 +9,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+url = 'https://tmdb.lewagon.com/movie/top_rated'
+response = JSON.parse(URI.open(url).read)
+movies = response["results"]
+movies.each do |movie|
+  new_movie = {
+    title: movie["original_title"],
+    overview: movie["overview"],
+    poster_url: "https://image.tmdb.org/t/p/w500#{movie["poster_path"]}",
+    rating: movie["vote_average"]
+  }
+  Movie.create(new_movie)
+end
+
+10.times {
+  List.create(
+    name: Faker::GreekPhilosophers.name
+  )
+}
+
+20.times {
+  bookmark = Bookmark.new(comment: Faker::Quotes::Shakespeare.as_you_like_it_quote)
+  bookmark.movie = Movie.all.sample
+  bookmark.list = List.all.sample
+  bookmark.save
+}
